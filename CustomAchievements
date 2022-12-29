@@ -1,0 +1,56 @@
+
+local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/MuhXd/Models/main/RegularVynixu's%20Achievement%20Modifyer"))()
+
+local AchievementLoader = {}
+
+
+AchievementLoader.Load = function(ModName)
+
+local Slipt = string.split("AchievementsSaves   By MuhammadGames,Helped by RegularVynixu","|")
+local valid2 = isfolder("AchievementsSaves   By MuhammadGames,Helped by RegularVynixu")
+if not valid2 then
+  makefolder("AchievementsSaves   By MuhammadGames,Helped by RegularVynixu")
+end
+
+local fileName = ModName.."Save's.txt"
+local filePath = "AchievementsSaves   By MuhammadGames,Helped by RegularVynixu".. "/".. fileName
+local valid = isfile(filePath)
+
+
+
+if not valid then
+writefile(filePath, "Helped by RegularVynixu|")
+end
+end
+function AchievementsGet(Achievement,ModName)
+
+ local fileName = ModName.."Save's.txt"
+local filePath = "AchievementsSaves   By MuhammadGames,Helped by RegularVynixu".. "/".. fileName
+local valid = isfile(filePath)
+
+    local read = readfile(filePath)  
+local read2 = tostring(read)
+local read2 = string.split(read,"|")
+     FOUND = false
+     Find = ""
+for i,v in pairs(Achievement) do
+    Find=Find.." "..v
+end
+
+    for i,v in pairs(read2) do
+    if v == Find then
+    FOUND = true
+    end
+end 
+if FOUND == false then
+Achievements.Get(Achievement)
+Write = ""
+for i,v in pairs(Achievement) do
+    Write=Write.." "..v
+    end
+appendfile(filePath,Write.."|")
+end
+end
+AchievementLoader.Get = function(Give,ModName)
+AchievementsGet(Give,ModName)
+end
